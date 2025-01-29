@@ -13,3 +13,4 @@
 
 - В ветке [`lab1`](https://github.com/Andry-git/DevJavaSpringApp/tree/lab1) находится первая лабораторная работа.
 - В ветке [`lab2`](https://github.com/Andry-git/DevJavaSpringApp/tree/lab2) находится вторая лабораторная работа.
+- В ветке [`zmeika`](https://github.com/Andry-git/DevJavaSpringApp/tree/zmeika) находится игра Змейка.
