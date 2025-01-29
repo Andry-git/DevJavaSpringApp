@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="snake" />
         <module name="JavaGame" />
+        <module name="match3" />
       </profile>
     </annotationProcessing>
   </component>
