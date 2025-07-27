@@ -8,18 +8,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "app_user")
+@Table(name = "t_users")
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 public class User {
   @Id
@@ -29,10 +27,15 @@ public class User {
   @Column(name = "first_name", nullable = false)
   private String firstName;
 
-  @Column(name = "last_name", nullable = false)
-  private String lastName;
+  @Column(name = "age", nullable = false)
+  private Integer age;
 
   @Enumerated(EnumType.STRING)
-  @Column(nullable = false)
-  private Role role;
+  private Country country;
+
+  public User(String firstName, Integer age, Country country) {
+    this.firstName = firstName;
+    this.age = age;
+    this.country = country;
+  }
 }

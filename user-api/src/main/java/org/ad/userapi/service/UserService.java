@@ -6,4 +6,5 @@ import org.ad.userapi.model.User;
 public interface UserService {
   List<User> getAllUsers();
   User createUser(User user);
+  List<User> getUsersNotFromCountrySortedByAge(String country);
 }
