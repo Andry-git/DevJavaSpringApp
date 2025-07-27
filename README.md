@@ -1,112 +1,120 @@
-# User API - Spring Boot Приложение
+# User API Application
 
-Это простое Java web-приложение, построенное на Spring Boot, которое предоставляет базовую функциональность управления пользователями.
+## Описание
 
-## Функциональность
+Простое веб-приложение на Spring Boot для управления пользователями с REST API и in-memory базой данных H2.
 
-*   **Получить всех пользователей:** Получает JSON-ответ со списком всех доступных пользователей с эндпойнта `/user-api/v1/users` используя `GET` запрос.
-*   **Создать пользователя:** Добавляет нового пользователя с заданными параметрами в базу данных через `POST` запрос к эндпойнту `/user-api/v1/users`. Информация о пользователе передается в теле запроса в формате JSON.
+## Функционал
 
-## Используемые технологии
+- Получение списка всех пользователей
+- Добавление нового пользователя
+- Получение пользователей, не принадлежащих к указанной стране, с сортировкой по возрасту
 
-*   **Java**
-*   **Spring Boot**
-   *   Spring Web
-   *   Spring Data JPA
-*   **H2 Database (В памяти)**
+## Технологии
 
-## Архитектура
+- Java 17
+- Spring Boot 3.2.0
+- Spring Web
+- Spring Data JPA
+- H2 Database (in-memory)
+- Lombok
 
-Приложение следует многослойной архитектуре:
+## Запуск приложения
 
-*   **Слой репозитория:**  Обрабатывает взаимодействие с базой данных, используя Spring Data JPA. Включает в себя интерфейс `UserRepository`.
-*   **Слой сервиса:** Содержит бизнес-логику приложения.  Включает класс `UserService`.
-*   **Слой контроллера:** Обрабатывает входящие HTTP-запросы и возвращает ответы.  Включает класс `UserController`.
+1. Клонируйте репозиторий
+2. Соберите проект:
+   ```bash
+   mvn clean package
+   ```
+3. Запустите приложение:
 
-## Сущность пользователя (`User`)
+## Доступные эндпоинты
 
-Сущность `User` имеет следующие поля:
+### 1. Получить всех пользователей
+```
+GET /user-api/v1/users
+```
 
-*   `id` (Long): Уникальный идентификатор (первичный ключ, генерируется автоматически).
-*   `firstName` (String): Имя.
-*   `lastName` (String): Фамилия.
-*   `role` (Role): Роль пользователя (см. ниже).
+Пример ответа:
+```json
+[
+    {
+        "id": 1,
+        "firstName": "Andrey",
+        "age": 33,
+        "country": "RUSSIA"
+    },
+    ...
+]
+```
 
-## Enum Роли (`Role`)
+### 2. Добавить нового пользователя
+```
+POST /user-api/v1/users
+```
+Тело запроса (JSON):
+```json
+{
+    "firstName": "New User",
+    "age": 25,
+    "country": "GERMANY"
+}
+```
 
-Enum `Role` определяет возможные роли для пользователя:
+### 3. Получить пользователей не из указанной страны (сортировка по возрасту)
+```
+GET /user-api/v1/additional-info?country=COUNTRY_NAME
+```
+Пример:
+```
+GET /user-api/v1/additional-info?country=RUSSIA
+```
 
-*   `ADMIN`
-*   `DEVELOPER`
-*   `TESTER`
-*   `SYSTEM_ANALYST`
-*   `TEAM_LEAD`
+## Доступ к H2 Console
 
-## База данных
+После запуска приложения доступна консоль H2 по адресу:
+```
+http://localhost:8083/h2-console
+```
 
-Приложение использует базу данных H2 в памяти для хранения данных.  Имя таблицы - `app_user` (может быть настроено с помощью аннотации `@Table` в сущности `User`).
+Параметры подключения:
+- JDBC URL: `jdbc:h2:mem:userdb`
+- User Name: `sa`
+- Password: (оставить пустым)
 
-### Начальные данные
+## Структура проекта
 
-При запуске приложения таблица базы данных автоматически заполняется 5 записями пользователей, по одной для каждой роли, определенной в enum `Role`.
+```
+src/
+├── main/
+│   ├── java/
+│   │   └── org/ad/userapi/
+│   │       ├── config/       - Конфигурационные классы
+│   │       ├── controller/   - REST контроллеры
+│   │       ├── model/        - Сущности и enum'ы
+│   │       ├── repository/   - JPA репозитории
+│   │       ├── service/      - Сервисный слой
+│   │       └── UserApiApplication.java - Главный класс
+│   └── resources/
+│       └── application.properties - Настройки приложения
+```
 
-## Настройка и запуск приложения
+## Инициализация данных
 
-1.  **Предварительные требования:**
-   *   Java Development Kit (JDK) 17 или выше
-   *   Maven или Gradle (инструмент сборки)
+При первом запуске автоматически создаются тестовые данные:
+- 5 пользователей из разных стран
+- Данные создаются только если таблица пуста
 
-2.  **Клонируйте репозиторий и переключитесь на ветку lab4:**
+## Примеры запросов
 
-    ```bash
-    git checkout lab4
-    cd /DevJavaSpringApp/user-api
-    ```
+### Добавление пользователя:
+```bash
+curl -X POST -H "Content-Type: application/json" \
+-d '{"firstName":"Maria","age":29,"country":"BRAZIL"}' \
+http://localhost:8083/user-api/v1/users
+```
 
-3.  **Сборка приложения:**
-
-   *   **Maven:**
-
-       ```bash
-       ./mvnw clean install
-       ```
-
-4.  **Запуск приложения:**
-
-   *   **Maven:**
-
-       ```bash
-       ./mvnw spring-boot:run
-       ```
-
-    Приложение запустится и будет прослушивать порт `http://localhost:8080` по умолчанию.
-
-## Конфигурация
-
-Приложение настраивается с использованием файла `application.properties`.
-
-**Пример `application.properties`:**
-
-```properties
-# Server port
-server.port=8080
-
-# H2 Database Configuration
-spring.datasource.url=jdbc:h2:mem:userdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-
-# H2 Console
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
-
-# JPA/Hibernate
-spring.jpa.show-sql=true
-spring.jpa.hibernate.ddl-auto=none
-spring.jpa.defer-datasource-initialization=true
-
-# SQL Initialization
-spring.sql.init.mode=always
-spring.sql.init.schema-locations=classpath:schema.sql
-spring.sql.init.data-locations=classpath:data.sql
+### Получение пользователей не из Японии:
+```bash
+curl http://localhost:8083/user-api/v1/additional-info?country=JAPAN
+```

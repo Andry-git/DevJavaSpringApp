@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a3c05c5-ab2b-451f-85fe-0364244b643a" name="Changes" comment="lab4">
-      <change afterPath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/controller/DataInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/controller/DataSourceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/model/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/model/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-api/src/main/java/org/ad/userapi/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-api/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/resources/data.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-api/src/main/resources/schema.sql" beforeDir="false" />
+    <list default="true" id="9a3c05c5-ab2b-451f-85fe-0364244b643a" name="Changes" comment="exam">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +139,7 @@
       <workItem from="1739956984261" duration="500000" />
       <workItem from="1749639335551" duration="5638000" />
       <workItem from="1749645110137" duration="34000" />
-      <workItem from="1753605202836" duration="4812000" />
+      <workItem from="1753605202836" duration="5017000" />
     </task>
     <task id="LOCAL-00001" summary="Match3">
       <option name="closed" value="true" />
@@ -193,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749644796023</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="exam">
+      <option name="closed" value="true" />
+      <created>1753613673292</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1753613673292</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +223,7 @@
     <MESSAGE value="Chess" />
     <MESSAGE value="Chess readme" />
     <MESSAGE value="lab4" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab4" />
+    <MESSAGE value="exam" />
+    <option name="LAST_COMMIT_MESSAGE" value="exam" />
   </component>
 </project>
